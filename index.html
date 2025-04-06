@@ -250,14 +250,14 @@
                 </div>
                 <div class="contacto-item">
                     <span>📍</span>
-                    <span>Argentina, Buenos Aires, Caseros</span>
+                    <span>Argentina, Buenos Aires</span>
                 </div>
             </div>
         </header>
 
         <section id="objetivo">
             <h2>🎯 Objetivo Profesional</h2>
-            <p>Busco un trabajo a largo plazo que me brinde un aprendizaje y crecimiento continuo en el área de Informática. Estoy dispuesto a mantener constancia con mis responsabilidades laborales, el auto aprendizaje y el trabajo en equipo para mejorar y crecer en conjunto con las habilidades, herramientas y aptitudes. Aspiro a hacer un sendero en construcciones y soluciones para mi entorno, como en proyectos, desarrollar software práctico y el entorno de trabajo.</p>
+            <p>Integrarme en el areá laboral de informatica para desarollar constantemente la curva de aprendizaje. Estoy dispuesto a mantener constancia con mis responsabilidades tanto como laborales como personales, desarollar habitos como el auto aprendizaje, la disciplina, el trabajo en equipo y adquirir nuevas habilidades y herramientas en el camino.</p>
         </section>
 
         <section id="educacion">
@@ -276,7 +276,6 @@
                 <span class="skill-tag">HTML</span>
                 <span class="skill-tag">CSS</span>
                 <span class="skill-tag">JavaScript & Frameworks</span>
-                <span class="skill-tag">WTerminal, Powershell, Bash, Fish</span>
                 <span class="skill-tag">Git</span>
                 <span class="skill-tag">FTP</span>
                 <span class="skill-tag">GPT-4o</span>
@@ -285,16 +284,12 @@
         </section>
 
         <section id="otras-habilidades">
-            <h2>🔧 Otras Habilidades</h2>
+            <h2>🔧 Otros</h2>
             <ul>
-                <li>Soldado y desoldado de componentes básicos</li>
-                <li>Desarmado y armado de computadoras</li>
-                <li>Manejo de programas varios</li>
-                <li>Creación de aplicaciones básicas</li>
-                <li>Manejo de redes y comunidades</li>
-                <li>Facturación</li>
-                <li>Uso de herramientas y máquinas pesadas (carpintería, herrería y soldado)</li>
-                <li>Uso de CachyOS (dist Linux kernel) & Windows 11 IoT LTSC</li>
+                <li>Reparación de hardware, creación de apps básicas, redes.</li>
+                <li>Programas: Gimp, VSCodium, NVim</li>
+                <li>Shell: Powershell 7 (CTT) & Fish (Kitty)</li>
+                <li>OS: CachyOS & Windows 11 Iot LTSC optimizado</li>
             </ul>
         </section>
 
@@ -314,54 +309,13 @@
                 <span class="skill-tag">Linux & BSD</span>
                 <span class="skill-tag">Gentoo & LFS</span>
                 <span class="skill-tag">Linux distros</span>
-                <span class="skill-tag">Minimal & Simple</span>
             </div>
         </section>
-
-        <section id="proyectos">
-            <h2>🚀 Proyectos</h2>
-            
-            <div class="proyecto">
-                <h3>Generador de Prompts de AI</h3>
-                <p>Herramienta que facilita la creación de prompts efectivos para diferentes modelos de inteligencia artificial como GPT-4o y Claude.</p>
-                <div id="prompt-generator">
-                    <select id="ai-model" style="margin-top: 10px; padding: 5px; border-radius: 5px; border: 1px solid var(--border-color);">
-                        <option value="gpt">GPT-4o</option>
-                        <option value="claude" selected>Claude 3.7 Sonnet</option>
-                    </select>
-                    <select id="prompt-type" style="margin-left: 10px; padding: 5px; border-radius: 5px; border: 1px solid var(--border-color);">
-                        <option value="creative">Creativo</option>
-                        <option value="technical">Técnico</option>
-                        <option value="educational">Educativo</option>
-                    </select>
-                    <button id="generate-prompt" style="margin-left: 10px; padding: 5px 10px; background-color: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Generar</button>
-                    <div id="prompt-result" style="margin-top: 10px; padding: 10px; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 5px; min-height: 50px;"></div>
-                </div>
-            </div>
-            
-            <div class="proyecto">
-                <h3>Reloj Climático de Argentina</h3>
-                <p>Widget que muestra la hora actual y condiciones climáticas de las principales provincias de Argentina.</p>
-                <div class="clock-widget">
-                    <h4>Hora y Clima en Argentina</h4>
-                    <div class="clock-container" id="province-clocks"></div>
-                </div>
-            </div>
-            
-            <div class="proyecto">
-                <h3>Contador de Visitas</h3>
-                <p>Sistema simple que registra el número de visitantes a esta página web.</p>
-                <div class="visitor-counter">
-                    <p>Visitas a esta página: <span id="visitor-count">0</span></p>
-                </div>
-            </div>
-        </section>
-
         <div class="footer">
             <p><strong>Herramientas utilizadas en esta página:</strong></p>
             <p>HTML5, CSS3, JavaScript ES6, Emojis Unicode</p>
             <p>Desarrollado con la ayuda de Claude 3.7 Sonnet</p>
-            <p>© 2025 Alan Nahuel Slachta</p>
+            <p>Web portfolio local</p>
         </div>
     </div>
 
@@ -384,93 +338,6 @@
                 localStorage.setItem('darkMode', 'false');
             }
         });
-
-        // Contador de visitas
-        const visitCount = localStorage.getItem('visitCount') || 0;
-        const newCount = parseInt(visitCount) + 1;
-        localStorage.setItem('visitCount', newCount);
-        document.getElementById('visitor-count').textContent = newCount;
-
-        // Generador de prompts
-        const promptTemplates = {
-            gpt: {
-                creative: "Crea una historia imaginativa sobre [tema] con un enfoque en [enfoque].",
-                technical: "Explica detalladamente cómo funciona [tecnología] y proporciona ejemplos de código.",
-                educational: "Proporciona una explicación clara y concisa sobre [tema] adecuada para estudiantes de [nivel]."
-            },
-            claude: {
-                creative: "Escribe una narrativa detallada sobre [tema] que incluya [elementos] y tenga un tono [tono].",
-                technical: "Proporciona una explicación técnica profunda de [tema] con ejemplos prácticos y casos de uso.",
-                educational: "Desarrolla material educativo sobre [tema] para [audiencia], incluyendo conceptos clave y ejercicios."
-            }
-        };
-
-        document.getElementById('generate-prompt').addEventListener('click', () => {
-            const model = document.getElementById('ai-model').value;
-            const type = document.getElementById('prompt-type').value;
-            const template = promptTemplates[model][type];
-            
-            // Personalizar plantilla
-            let customizedTemplate = template;
-            if (type === 'creative') {
-                const temas = ['un viaje espacial', 'un mundo subterráneo', 'una civilización perdida', 'una inteligencia artificial consciente'];
-                const enfoques = ['el misterio', 'la aventura', 'la reflexión filosófica', 'el humor'];
-                customizedTemplate = template.replace('[tema]', temas[Math.floor(Math.random() * temas.length)])
-                                           .replace('[enfoque]', enfoques[Math.floor(Math.random() * enfoques.length)]);
-            } else if (type === 'technical') {
-                const tecnologias = ['contenedores Docker', 'redes neuronales', 'sistemas Unix', 'DevOps moderno'];
-                customizedTemplate = template.replace('[tecnología]', tecnologias[Math.floor(Math.random() * tecnologias.length)]);
-            } else if (type === 'educational') {
-                const temas = ['programación funcional', 'filosofía KISS', 'sistemas Linux', 'ciberseguridad básica'];
-                const niveles = ['principiantes', 'nivel intermedio', 'estudiantes avanzados'];
-                customizedTemplate = template.replace('[tema]', temas[Math.floor(Math.random() * temas.length)])
-                                           .replace('[nivel]', niveles[Math.floor(Math.random() * niveles.length)]);
-            }
-            
-            document.getElementById('prompt-result').textContent = customizedTemplate;
-        });
-
-        // Reloj Climático
-        const provinces = [
-            {name: 'Buenos Aires', timezone: 'America/Argentina/Buenos_Aires', weather: '🌤️ 22°C'},
-            {name: 'Córdoba', timezone: 'America/Argentina/Cordoba', weather: '☀️ 25°C'},
-            {name: 'Mendoza', timezone: 'America/Argentina/Mendoza', weather: '🌞 28°C'},
-            {name: 'Tucumán', timezone: 'America/Argentina/Tucuman', weather: '🌦️ 24°C'},
-            {name: 'Ushuaia', timezone: 'America/Argentina/Ushuaia', weather: '❄️ 5°C'},
-            {name: 'Salta', timezone: 'America/Argentina/Salta', weather: '☁️ 23°C'}
-        ];
-
-        function updateClocks() {
-            const clockContainer = document.getElementById('province-clocks');
-            clockContainer.innerHTML = '';
-            
-            provinces.forEach(province => {
-                const now = new Date();
-                
-                const provinceDiv = document.createElement('div');
-                provinceDiv.className = 'province-time';
-                
-                const provinceName = document.createElement('div');
-                provinceName.textContent = province.name;
-                provinceName.style.fontWeight = 'bold';
-                
-                const provinceTime = document.createElement('div');
-                provinceTime.textContent = now.toLocaleTimeString('es-AR', {timeZone: province.timezone});
-                
-                const provinceWeather = document.createElement('div');
-                provinceWeather.textContent = province.weather;
-                
-                provinceDiv.appendChild(provinceName);
-                provinceDiv.appendChild(provinceTime);
-                provinceDiv.appendChild(provinceWeather);
-                
-                clockContainer.appendChild(provinceDiv);
-            });
-        }
-
-        // Actualizar relojes cada segundo
-        updateClocks();
-        setInterval(updateClocks, 1000);
     </script>
 </body>
 </html>
