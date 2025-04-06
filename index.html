@@ -3,221 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio de Alan Slachta</title>
+    <title>Alan Nahuel Slachta | Portfolio</title>
     <style>
         :root {
-            --text-color: #333;
-            --bg-color: #f5f5f5;
-            --card-bg: #fff;
-            --accent-color: #3fad7d;
-            --border-color: #ddd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
+            --primary-color: #009078;
+            --secondary-color: #34495e;
+            --accent-color: #3ee6b5; /* Verde menta */
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
         }
-
-        .dark-mode {
-            --text-color: #e0e0e0;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --accent-color: #4ddfaa;
-            --border-color: #333;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-        }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            padding: 2rem 1rem;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
             line-height: 1.6;
         }
-
-        .container {
-            width: 100%;
-            max-width: 21cm; /* Ancho A4 */
-            min-height: 29.7cm; /* Alto A4 */
-            background-color: var(--card-bg);
-            box-shadow: 0 10px 30px var(--shadow-color);
-            padding: 2rem;
-            border-radius: 8px;
-        }
-
+        
         header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
             text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--accent-color);
+            position: relative;
         }
-
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
         h1 {
-            color: var(--accent-color);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            margin: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background-color: rgba(62, 230, 181, 0.3); /* Verde menta con transparencia */
+            transform: translateY(-3px);
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(62, 230, 181, 0.2); /* Sombra con verde menta */
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--secondary-color);
             margin-bottom: 0.5rem;
         }
-
-        .contacto {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1rem 0;
+        
+        .skill-list {
+            list-style: none;
         }
-
-        .contacto-item {
+        
+        .skill-list li {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            margin-bottom: 0.5rem;
         }
-
-        section {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        h2 {
+        
+        .skill-list li:before {
+            content: "•";
             color: var(--accent-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-weight: bold;
         }
-
-        .skills-container {
+        
+        .interest-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.5rem;
+            margin-top: 1rem;
         }
-
-        .skill-tag {
-            background-color: var(--accent-color);
-            color: white;
+        
+        .tag {
+            background-color: rgba(62, 230, 181, 0.15); /* Verde menta con transparencia */
+            color: #2c3e50;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
-
-        .proyecto {
-            background-color: var(--bg-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent-color);
+        
+        .tag:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(62, 230, 181, 0.4);
         }
-
-        .proyecto h3 {
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
         }
-
-        .switch-container {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            background-color: var(--card-bg);
-            padding: 0.5rem;
-            border-radius: 20px;
-            box-shadow: 0 2px 10px var(--shadow-color);
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input { 
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--accent-color);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .visitor-counter {
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: bold;
-        }
-
-        .clock-widget {
-            background-color: var(--bg-color);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .clock-container {
-            display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            transition: all 0.3s ease;
         }
-
-        .province-time {
-            background-color: var(--card-bg);
-            padding: 0.5rem;
-            border-radius: 5px;
-            min-width: 150px;
-            box-shadow: 0 2px 5px var(--shadow-color);
+        
+        .social-icon:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
         }
-
-        .footer {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
         }
-
+        
+        .theme-toggle:hover {
+            transform: rotate(45deg);
+            box-shadow: 0 5px 15px rgba(62, 230, 181, 0.5);
+        }
+        
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+        }
+        
+        body.dark-theme .section {
+            background-color: #16213e;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-theme .section-title {
+            color: #e6e6e6;
+        }
+        
+        body.dark-theme .skill-category h3 {
+            color: #e6e6e6;
+        }
+        
+        body.dark-theme .tag {
+            background-color: rgba(62, 230, 181, 0.2);
+            color: #e6e6e6;
+        }
+        
+        body.dark-theme .tag:hover {
+            background-color: var(--accent-color);
+            color: #16213e;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
             
-            .contacto {
+            .contact-info {
                 flex-direction: column;
                 align-items: center;
             }
@@ -225,118 +264,211 @@
     </style>
 </head>
 <body>
-    <div class="switch-container">
-        <span>🌞</span>
-        <label class="switch">
-            <input type="checkbox" id="themeToggle">
-            <span class="slider"></span>
-        </label>
-        <span>🌙</span>
-    </div>
-
-    <div class="container">
-        <header>
-            <h1>Alan Nahuel Slachta</h1>
-            <p>24 años | Informática & Desarrollo</p>
-            
-            <div class="contacto">
-                <div class="contacto-item">
-                    <span>📧</span>
-                    <a href="mailto:alannahuelslachta@protonmail.com">alannahuelslachta@protonmail.com</a>
-                </div>
-                <div class="contacto-item">
-                    <span>📱</span>
-                    <span>(+54) 11 7369-6115</span>
-                </div>
-                <div class="contacto-item">
-                    <span>📍</span>
-                    <span>Argentina, Buenos Aires</span>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Alan Slachta</h1>
+                <p class="tagline">Desarrollador Junior | SysAdmin</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <a href="mailto:alannahuelslachta@protonmail.com" style="color: white; text-decoration: none;">alannahuelslachta@protonmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>(+54) 11 7369-6115</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Argentina, Buenos Aires</span>
+                    </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <section id="objetivo">
-            <h2>🎯 Objetivo Profesional</h2>
-            <p>Integrarme en el areá laboral de informatica para desarollar constantemente la curva de aprendizaje. Estoy dispuesto a mantener constancia con mis responsabilidades tanto como laborales como personales, desarollar habitos como el auto aprendizaje, la disciplina, el trabajo en equipo y adquirir nuevas habilidades y herramientas en el camino.</p>
+    <main class="container">
+        <section class="section">
+            <div class="section-title">
+                <span>🎯</span>
+                <h2>Objetivo Profesional</h2>
+            </div>
+            <p>
+                Integrarme en el área laboral de informática para desarrollar constantemente la curva de aprendizaje. 
+                Estoy dispuesto a mantener constancia con mis responsabilidades tanto laborales como personales, 
+                desarrollar hábitos como el auto aprendizaje, la disciplina, el trabajo en equipo y adquirir nuevas 
+                habilidades y herramientas en el camino.
+            </p>
         </section>
 
-        <section id="educacion">
-            <h2>🎓 Educación</h2>
-            <ul>
-                <li>Instituto Padre Elizalde (Mod. Técnico hasta 3er año)</li>
-                <li>Instituto Sarmiento (Mod. Economía hasta 5to año)</li>
-                <li>N8 Nuestra señora de Luján (Bach. Artes Visuales último año)</li>
-                <li>6 de Abril, 2021 Secundario completo</li>
-            </ul>
-        </section>
-
-        <section id="habilidades">
-            <h2>💻 Habilidades Técnicas</h2>
-            <div class="skills-container">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript & Frameworks</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">FTP</span>
-                <span class="skill-tag">GPT-4o</span>
-                <span class="skill-tag">Claude 3.7 Sonnet</span>
+        <section class="section">
+            <div class="section-title">
+                <span>🎓</span>
+                <h2>Educación</h2>
+            </div>
+            <div>
+                <h3>Bachiller en Artes Visuales (2021)</h3>
+                <p>Secundario completo</p>
+                <p>Formación previa en técnicas y economía</p>
             </div>
         </section>
 
-        <section id="otras-habilidades">
-            <h2>🔧 Otros</h2>
-            <ul>
-                <li>Reparación de hardware, creación de apps básicas, redes.</li>
-                <li>Programas: Gimp, VSCodium, NVim</li>
-                <li>Shell: Powershell 7 (CTT) & Fish (Kitty)</li>
-                <li>OS: CachyOS & Windows 11 Iot LTSC optimizado</li>
-            </ul>
-        </section>
-
-        <section id="idiomas">
-            <h2>🌐 Idiomas</h2>
-            <ul>
-                <li><strong>Inglés:</strong> Fluido en lectura, escritura y búsqueda (Nivel B2)</li>
-                <li><strong>Español:</strong> Nativo</li>
-            </ul>
-        </section>
-
-        <section id="intereses">
-            <h2>⭐ Intereses</h2>
-            <div class="skills-container">
-                <span class="skill-tag">DevOps & SysAdmin</span>
-                <span class="skill-tag">Unix & KISS philosophy</span>
-                <span class="skill-tag">Linux & BSD</span>
-                <span class="skill-tag">Gentoo & LFS</span>
-                <span class="skill-tag">Linux distros</span>
+        <section class="section">
+            <div class="section-title">
+                <span>💻</span>
+                <h2>Habilidades</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Lenguajes de Programación</h3>
+                    <ul class="skill-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript y frameworks relacionados</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Herramientas</h3>
+                    <ul class="skill-list">
+                        <li>Powershell</li>
+                        <li>Bash</li>
+                        <li>Git</li>
+                        <li>FTP</li>
+                        <li>GPT-4o</li>
+                        <li>Claude 3.7 Sonnet</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programas</h3>
+                    <ul class="skill-list">
+                        <li>Gimp</li>
+                        <li>Nvim</li>
+                        <li>VSCodium</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Sistemas Operativos</h3>
+                    <ul class="skill-list">
+                        <li>CachyOS</li>
+                        <li>Windows 11 IoT LTSC optimizado</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Otras Habilidades</h3>
+                    <ul class="skill-list">
+                        <li>Reparación de hardware</li>
+                        <li>Creación de apps</li>
+                    </ul>
+                </div>
             </div>
         </section>
-        <div class="footer">
+
+        <section class="section">
+            <div class="section-title">
+                <span>🌎</span>
+                <h2>Idiomas</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Español</h3>
+                    <p>Nativo</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Inglés</h3>
+                    <p>Fluido en lectura, escritura y búsqueda (Nivel B2)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-title">
+                <span>🔍</span>
+                <h2>Intereses</h2>
+            </div>
+            <div class="interest-tags">
+                <span class="tag">DevOps</span>
+                <span class="tag">SysAdmin</span>
+                <span class="tag">Linux ecosystem</span>
+                <span class="tag">Unix philosophy</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
             <p><strong>Herramientas utilizadas en esta página:</strong></p>
             <p>HTML5, CSS3, JavaScript ES6, Emojis Unicode</p>
             <p>Desarrollado con la ayuda de Claude 3.7 Sonnet</p>
-            <p>Web portfolio local</p>
+            <p>Web portfolio local. Ultima modificacion 6 de abril 2025</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">🔗</a>
+                <a href="#" class="social-icon">📱</a>
+                <a href="#" class="social-icon">📧</a>
+            </div>
         </div>
-    </div>
+    </footer>
+
+    <div class="theme-toggle" id="themeToggle">🌓</div>
 
     <script>
-        // Modo oscuro
+        // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
         
-        // Verificar si hay una preferencia guardada
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            themeToggle.checked = true;
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
         }
         
-        themeToggle.addEventListener('change', () => {
-            if (themeToggle.checked) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('darkMode', 'true');
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            
+            // Save preference to localStorage
+            if (body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
             } else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('darkMode', 'false');
+                localStorage.setItem('theme', 'light');
             }
+        });
+        
+        // Animation for sections
+        const sections = document.querySelectorAll('.section');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
+        });
+        
+        // Skills Animation on Hover
+        const skillItems = document.querySelectorAll('.skill-list li');
+        
+        skillItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.color = '#3ee6b5'; // Verde menta
+                item.style.transform = 'translateX(5px)';
+                item.style.transition = 'all 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.color = '';
+                item.style.transform = 'translateX(0)';
+            });
         });
     </script>
 </body>
