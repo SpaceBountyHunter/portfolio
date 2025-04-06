@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Alan Slachta</title>
+    <style>
+        :root {
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg: #fff;
+            --accent-color: #3fad7d;
+            --border-color: #ddd;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --text-color: #e0e0e0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #4ddfaa;
+            --border-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 21cm; /* Ancho A4 */
+            min-height: 29.7cm; /* Alto A4 */
+            background-color: var(--card-bg);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contacto {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .proyecto {
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .proyecto h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .switch-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--card-bg);
+            padding: 0.5rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .visitor-counter {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .clock-widget {
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .clock-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .province-time {
+            background-color: var(--card-bg);
+            padding: 0.5rem;
+            border-radius: 5px;
+            min-width: 150px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .contacto {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="switch-container">
+        <span>🌞</span>
+        <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+        <span>🌙</span>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Alan Nahuel Slachta</h1>
+            <p>24 años | Informática & Desarrollo</p>
+            
+            <div class="contacto">
+                <div class="contacto-item">
+                    <span>📧</span>
+                    <a href="mailto:alannahuelslachta@protonmail.com">alannahuelslachta@protonmail.com</a>
+                </div>
+                <div class="contacto-item">
+                    <span>📱</span>
+                    <span>(+54) 11 7369-6115</span>
+                </div>
+                <div class="contacto-item">
+                    <span>📍</span>
+                    <span>Argentina, Buenos Aires, Caseros</span>
+                </div>
+            </div>
+        </header>
+
+        <section id="objetivo">
+            <h2>🎯 Objetivo Profesional</h2>
+            <p>Busco un trabajo a largo plazo que me brinde un aprendizaje y crecimiento continuo en el área de Informática. Estoy dispuesto a mantener constancia con mis responsabilidades laborales, el auto aprendizaje y el trabajo en equipo para mejorar y crecer en conjunto con las habilidades, herramientas y aptitudes. Aspiro a hacer un sendero en construcciones y soluciones para mi entorno, como en proyectos, desarrollar software práctico y el entorno de trabajo.</p>
+        </section>
+
+        <section id="educacion">
+            <h2>🎓 Educación</h2>
+            <ul>
+                <li>Instituto Padre Elizalde (Mod. Técnico hasta 3er año)</li>
+                <li>Instituto Sarmiento (Mod. Economía hasta 5to año)</li>
+                <li>N8 Nuestra señora de Luján (Bach. Artes Visuales último año)</li>
+                <li>6 de Abril, 2021 Secundario completo</li>
+            </ul>
+        </section>
+
+        <section id="habilidades">
+            <h2>💻 Habilidades Técnicas</h2>
+            <div class="skills-container">
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Terminal</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">FTP</span>
+                <span class="skill-tag">GPT-4o</span>
+                <span class="skill-tag">Claude 3.7 Sonnet</span>
+                <span class="skill-tag">CachyOS</span>
+                <span class="skill-tag">Windows 11 IoT LTSC</span>
+            </div>
+        </section>
+
+        <section id="otras-habilidades">
+            <h2>🔧 Otras Habilidades</h2>
+            <ul>
+                <li>Soldado y desoldado de componentes básicos</li>
+                <li>Desarmado y armado de computadoras</li>
+                <li>Manejo de programas varios</li>
+                <li>Creación de aplicaciones básicas</li>
+                <li>Manejo de redes y comunidades</li>
+                <li>Facturación</li>
+                <li>Uso de herramientas y máquinas pesadas (carpintería, herrería y soldado)</li>
+            </ul>
+        </section>
+
+        <section id="idiomas">
+            <h2>🌐 Idiomas</h2>
+            <ul>
+                <li><strong>Inglés:</strong> Fluido en lectura, escritura y búsqueda (Nivel B2)</li>
+                <li><strong>Español:</strong> Nativo</li>
+            </ul>
+        </section>
+
+        <section id="intereses">
+            <h2>⭐ Intereses</h2>
+            <div class="skills-container">
+                <span class="skill-tag">DevOps & SysAdmin</span>
+                <span class="skill-tag">Unix & KISS philosophy</span>
+                <span class="skill-tag">Linux & BSD</span>
+                <span class="skill-tag">Gentoo & LFS</span>
+                <span class="skill-tag">Linux distros</span>
+                <span class="skill-tag">Minimalismo</span>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2>🚀 Proyectos</h2>
+            
+            <div class="proyecto">
+                <h3>Generador de Prompts de AI</h3>
+                <p>Herramienta que facilita la creación de prompts efectivos para diferentes modelos de inteligencia artificial como GPT-4o y Claude.</p>
+                <div id="prompt-generator">
+                    <select id="ai-model" style="margin-top: 10px; padding: 5px; border-radius: 5px; border: 1px solid var(--border-color);">
+                        <option value="gpt">GPT-4o</option>
+                        <option value="claude" selected>Claude 3.7 Sonnet</option>
+                    </select>
+                    <select id="prompt-type" style="margin-left: 10px; padding: 5px; border-radius: 5px; border: 1px solid var(--border-color);">
+                        <option value="creative">Creativo</option>
+                        <option value="technical">Técnico</option>
+                        <option value="educational">Educativo</option>
+                    </select>
+                    <button id="generate-prompt" style="margin-left: 10px; padding: 5px 10px; background-color: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Generar</button>
+                    <div id="prompt-result" style="margin-top: 10px; padding: 10px; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 5px; min-height: 50px;"></div>
+                </div>
+            </div>
+            
+            <div class="proyecto">
+                <h3>Reloj Climático de Argentina</h3>
+                <p>Widget que muestra la hora actual y condiciones climáticas de las principales provincias de Argentina.</p>
+                <div class="clock-widget">
+                    <h4>Hora y Clima en Argentina</h4>
+                    <div class="clock-container" id="province-clocks"></div>
+                </div>
+            </div>
+            
+            <div class="proyecto">
+                <h3>Contador de Visitas</h3>
+                <p>Sistema simple que registra el número de visitantes a esta página web.</p>
+                <div class="visitor-counter">
+                    <p>Visitas a esta página: <span id="visitor-count">0</span></p>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p><strong>Herramientas utilizadas en esta página:</strong></p>
+            <p>HTML5, CSS3, JavaScript ES6, Emojis Unicode</p>
+            <p>Desarrollado con la ayuda de Claude 3.7 Sonnet</p>
+            <p>© 2025 Alan Nahuel Slachta</p>
+        </div>
+    </div>
+
+    <script>
+        // Modo oscuro
+        const themeToggle = document.getElementById('themeToggle');
+        
+        // Verificar si hay una preferencia guardada
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            themeToggle.checked = true;
+        }
+        
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+
+        // Contador de visitas
+        const visitCount = localStorage.getItem('visitCount') || 0;
+        const newCount = parseInt(visitCount) + 1;
+        localStorage.setItem('visitCount', newCount);
+        document.getElementById('visitor-count').textContent = newCount;
+
+        // Generador de prompts
+        const promptTemplates = {
+            gpt: {
+                creative: "Crea una historia imaginativa sobre [tema] con un enfoque en [enfoque].",
+                technical: "Explica detalladamente cómo funciona [tecnología] y proporciona ejemplos de código.",
+                educational: "Proporciona una explicación clara y concisa sobre [tema] adecuada para estudiantes de [nivel]."
+            },
+            claude: {
+                creative: "Escribe una narrativa detallada sobre [tema] que incluya [elementos] y tenga un tono [tono].",
+                technical: "Proporciona una explicación técnica profunda de [tema] con ejemplos prácticos y casos de uso.",
+                educational: "Desarrolla material educativo sobre [tema] para [audiencia], incluyendo conceptos clave y ejercicios."
+            }
+        };
+
+        document.getElementById('generate-prompt').addEventListener('click', () => {
+            const model = document.getElementById('ai-model').value;
+            const type = document.getElementById('prompt-type').value;
+            const template = promptTemplates[model][type];
+            
+            // Personalizar plantilla
+            let customizedTemplate = template;
+            if (type === 'creative') {
+                const temas = ['un viaje espacial', 'un mundo subterráneo', 'una civilización perdida', 'una inteligencia artificial consciente'];
+                const enfoques = ['el misterio', 'la aventura', 'la reflexión filosófica', 'el humor'];
+                customizedTemplate = template.replace('[tema]', temas[Math.floor(Math.random() * temas.length)])
+                                           .replace('[enfoque]', enfoques[Math.floor(Math.random() * enfoques.length)]);
+            } else if (type === 'technical') {
+                const tecnologias = ['contenedores Docker', 'redes neuronales', 'sistemas Unix', 'DevOps moderno'];
+                customizedTemplate = template.replace('[tecnología]', tecnologias[Math.floor(Math.random() * tecnologias.length)]);
+            } else if (type === 'educational') {
+                const temas = ['programación funcional', 'filosofía KISS', 'sistemas Linux', 'ciberseguridad básica'];
+                const niveles = ['principiantes', 'nivel intermedio', 'estudiantes avanzados'];
+                customizedTemplate = template.replace('[tema]', temas[Math.floor(Math.random() * temas.length)])
+                                           .replace('[nivel]', niveles[Math.floor(Math.random() * niveles.length)]);
+            }
+            
+            document.getElementById('prompt-result').textContent = customizedTemplate;
+        });
+
+        // Reloj Climático
+        const provinces = [
+            {name: 'Buenos Aires', timezone: 'America/Argentina/Buenos_Aires', weather: '🌤️ 22°C'},
+            {name: 'Córdoba', timezone: 'America/Argentina/Cordoba', weather: '☀️ 25°C'},
+            {name: 'Mendoza', timezone: 'America/Argentina/Mendoza', weather: '🌞 28°C'},
+            {name: 'Tucumán', timezone: 'America/Argentina/Tucuman', weather: '🌦️ 24°C'},
+            {name: 'Ushuaia', timezone: 'America/Argentina/Ushuaia', weather: '❄️ 5°C'},
+            {name: 'Salta', timezone: 'America/Argentina/Salta', weather: '☁️ 23°C'}
+        ];
+
+        function updateClocks() {
+            const clockContainer = document.getElementById('province-clocks');
+            clockContainer.innerHTML = '';
+            
+            provinces.forEach(province => {
+                const now = new Date();
+                
+                const provinceDiv = document.createElement('div');
+                provinceDiv.className = 'province-time';
+                
+                const provinceName = document.createElement('div');
+                provinceName.textContent = province.name;
+                provinceName.style.fontWeight = 'bold';
+                
+                const provinceTime = document.createElement('div');
+                provinceTime.textContent = now.toLocaleTimeString('es-AR', {timeZone: province.timezone});
+                
+                const provinceWeather = document.createElement('div');
+                provinceWeather.textContent = province.weather;
+                
+                provinceDiv.appendChild(provinceName);
+                provinceDiv.appendChild(provinceTime);
+                provinceDiv.appendChild(provinceWeather);
+                
+                clockContainer.appendChild(provinceDiv);
+            });
+        }
+
+        // Actualizar relojes cada segundo
+        updateClocks();
+        setInterval(updateClocks, 1000);
+    </script>
+</body>
+</html>
